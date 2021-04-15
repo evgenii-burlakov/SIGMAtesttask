@@ -16,20 +16,12 @@ class TestUtil {
         return "add test successful";
     }
 
-    static String getFirst(TestClass firstValue, TestClass secondValue) {
+    static String pop(TestClass firstValue, TestClass secondValue) {
         MyQueue<TestClass> testQueue = new MyQueue<>();
         testQueue.add(firstValue);
         testQueue.add(secondValue);
-        if (!testQueue.pop().equals(secondValue)) {
-            throw new AssertionError("getFirst test unsuccessful");
-        }
-        if (testQueue.size() != 1) {
-            throw new AssertionError("getFirst test unsuccessful");
-        }
-        if (!testQueue.pop().equals(firstValue)) {
-            throw new AssertionError("getFirst test unsuccessful");
-        }
-        if (testQueue.size() != 0) {
+        if (!testQueue.pop().equals(secondValue) || testQueue.size() != 1 ||
+                !testQueue.pop().equals(firstValue) || testQueue.size() != 0) {
             throw new AssertionError("getFirst test unsuccessful");
         }
         try {
