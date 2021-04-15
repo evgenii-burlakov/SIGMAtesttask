@@ -20,20 +20,20 @@ class TestUtil {
         MyQueue<TestClass> testQueue = new MyQueue<>();
         testQueue.add(firstValue);
         testQueue.add(secondValue);
-        if (!testQueue.getFirst().equals(secondValue)) {
+        if (!testQueue.pop().equals(secondValue)) {
             throw new AssertionError("getFirst test unsuccessful");
         }
         if (testQueue.size() != 1) {
             throw new AssertionError("getFirst test unsuccessful");
         }
-        if (!testQueue.getFirst().equals(firstValue)) {
+        if (!testQueue.pop().equals(firstValue)) {
             throw new AssertionError("getFirst test unsuccessful");
         }
         if (testQueue.size() != 0) {
             throw new AssertionError("getFirst test unsuccessful");
         }
         try {
-            testQueue.getFirst();
+            testQueue.pop();
         } catch (UnsupportedOperationException e) {
             return "getFirst test successful";
         }

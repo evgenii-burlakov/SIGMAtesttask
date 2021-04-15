@@ -10,12 +10,12 @@ public class MyQueue<T> {
         size++;
     }
 
-    public T getFirst() {
+    public T pop() {
         if (size == 0) {
             throw new UnsupportedOperationException();
         }
         T object = lastElement.getObject();
-        lastElement = lastElement.getNextNode();
+        lastElement = lastElement.getPreviousNode();
         size--;
         return object;
     }
@@ -26,16 +26,16 @@ public class MyQueue<T> {
 }
 
 class MyNodes<T> {
-    private final MyNodes<T> nextNode;
+    private final MyNodes<T> previousNode;
     private final T object;
 
-    MyNodes(T object, MyNodes<T> nextNode) {
+    MyNodes(T object, MyNodes<T> previousNode) {
         this.object = object;
-        this.nextNode = nextNode;
+        this.previousNode = previousNode;
     }
 
-    MyNodes<T> getNextNode() {
-        return nextNode;
+    MyNodes<T> getPreviousNode() {
+        return previousNode;
     }
 
     T getObject() {
